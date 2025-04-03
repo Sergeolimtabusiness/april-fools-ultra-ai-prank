@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,7 @@ import Logo from '@/components/Logo';
 import FeatureCard from '@/components/FeatureCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import FakeNotification from '@/components/FakeNotification';
-import { Brain, Code, Image, Sparkles, Lock, Gauge, Zap, ChevronRight, Star } from 'lucide-react';
+import { Brain, Code, Image, Sparkles, Lock, Gauge, Zap, ChevronRight, Star, Play } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -19,6 +18,11 @@ const Index = () => {
         <div className="flex gap-4">
           <Button variant="ghost" className="hidden md:flex">Comment ça marche</Button>
           <Button variant="ghost" className="hidden md:flex">Capacités</Button>
+          <Link to="/player" className="hidden md:flex">
+            <Button variant="outline" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-950/30">
+              <Play className="mr-2 h-4 w-4" /> Lecteur Vidéo
+            </Button>
+          </Link>
           <Link to="/signup">
             <Button className="bg-gradient-to-r from-blue-500 to-violet-600 hover:from-blue-600 hover:to-violet-700">
               Accéder Gratuitement
@@ -50,9 +54,11 @@ const Index = () => {
                 Accéder à UltraAI <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/20 hover:bg-white/5">
-              En savoir plus
-            </Button>
+            <Link to="/player">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto border-cyan-500/50 text-cyan-400 hover:bg-cyan-950/30">
+                <Play className="mr-2 h-4 w-4" /> Essayer le Lecteur Vidéo
+              </Button>
+            </Link>
           </div>
           
           <div className="pt-8 text-sm text-gray-400">
@@ -149,6 +155,30 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Video Player Promo Section - New Section */}
+      <section className="container mx-auto px-4 py-16 mb-16">
+        <div className="glass rounded-2xl p-8 md:p-16 relative overflow-hidden border-cyan-500/20">
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full opacity-20 blur-3xl"></div>
+          
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Découvrez notre <span className="text-gradient glow">Lecteur Vidéo Futuriste</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Profitez d'une expérience visuelle exceptionnelle avec notre lecteur vidéo high-tech. 
+              Effets visuels saisissants et fonctionnalités avancées pour tous vos contenus.
+            </p>
+            
+            <Link to="/player">
+              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 px-8 group">
+                <Play className="mr-2 h-5 w-5 group-hover:animate-pulse" /> Essayer Maintenant
+                <div className="absolute inset-0 w-full h-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 mb-16">
         <div className="glass rounded-2xl p-8 md:p-16 relative overflow-hidden">
@@ -182,7 +212,15 @@ const Index = () => {
       <footer className="container mx-auto px-4 py-8 border-t border-white/10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <Logo size="small" />
-          <div className="text-sm text-gray-400 mt-4 md:mt-0">
+          <div className="flex items-center gap-4 my-4 md:my-0">
+            <Link to="/player" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              Lecteur Vidéo
+            </Link>
+            <Link to="/signup" className="text-gray-400 hover:text-white transition-colors">
+              Inscription
+            </Link>
+          </div>
+          <div className="text-sm text-gray-400">
             © 2024 UltraAI Inc. Une expérience unique en son genre.
           </div>
         </div>
